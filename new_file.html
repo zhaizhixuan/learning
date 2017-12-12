@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">小于三十岁的人</button>
+		<button id='ages'>总年纪</button>
+		<div></div>
+		<ul>
+			
+			<!--<li>
+				<p>姓名：张三</p>
+				<p>年纪：25</p>
+				<p>性别：未知</p>
+			</li>
+			<li>
+				<p>姓名：李四</p>
+				<p>年纪：35</p>
+				<p>性别：未知</p>
+			</li>-->
+		</ul>
+	</body>
+	<script>
+			let data=[
+			{
+				name:'张三',
+				age:25,
+				sex:'未知'
+			},
+			{
+				name:'李四',
+				age:45,
+				sex:'未知'
+			},
+			{
+				name:'王晓红',
+				age:2,
+				sex:'未知'
+			},
+			]
+			
+			
+			var arr=[];
+			
+			for (var i = 0; i < data.length; i++) {
+				arr.push(data[i].age);
+			}
+//			console.log(arr)
+			ages.onclick=function(){
+				var d=arr.reduce(function(item1,item2){
+					return item1+item2
+				})
+				console.log(d)
+				var div=document.querySelector('div');
+				div.innerHTML=d;
+			}
+						
+						
+			btn.onclick=function(){
+				let newData=data.filter(function(item){
+					return item.age>40
+				})
+				render(newData);
+			}
+			
+
+			
+			function render(d){
+				let m= d.map(function(item){
+				return `
+					<li>
+						<p>姓名：${item.name}</p>
+						<p>年纪：${item.age}</p>
+						<p>性别：${item.sex}</p>
+					</li>
+				`
+			}).join('')
+
+			let ul=document.querySelector('ul');
+			ul.innerHTML=m;
+			}
+			render(data);
+			
+			
+			
+//			this
+//			全局  =>顶层对象
+//			函数  
+//				普通函数  谁调用指像谁
+//				箭头函数   绑定的是定义时候所在所用域的this
+	</script>
+</html>
